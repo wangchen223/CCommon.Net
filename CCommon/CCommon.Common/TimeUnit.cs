@@ -26,15 +26,39 @@ namespace CCommon.Common
     public static class ExTimeUnit
     {
         /// <summary>
-        /// 转换为微妙
+        /// 转换为微秒
         /// </summary>
         /// <param name="value"></param>
         /// <param name="number"></param>
         /// <returns></returns>
         public static long toMicros(this TimeUnit value,long number)
         {
-            int microsToMicro = 10000;//1毫秒=10000微妙
+            int microsToMicro = 10000;//1毫秒=10000微秒
             return LongHelper.SaturatedMultiply(Convert.ToInt32(value) * microsToMicro, number);
+        }
+
+        /// <summary>
+        /// 转换为毫秒
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        public static long toMicroseconds(this TimeUnit value, long number)
+        {
+            double microsToMicroseconds = 1;//1毫秒=1秒
+            return LongHelper.SaturatedMultiply(Convert.ToInt64(Convert.ToDouble(value) * microsToMicroseconds), number);
+        }
+
+        /// <summary>
+        /// 转换为秒
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        public static long toSeconds(this TimeUnit value, long number)
+        {
+            double microsToSeconds = 1/1000d;//1毫秒=1秒
+            return LongHelper.SaturatedMultiply(Convert.ToInt64(Convert.ToDouble(value) * microsToSeconds), number);
         }
     }
 }
