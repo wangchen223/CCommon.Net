@@ -12,72 +12,7 @@ namespace CCommon.Common.Hash
     /// </summary>
     public class MurmurHash3
     {
-
-        /** 128 bits of state */
-        private static class LongPair
-        {
-            public static long val1;
-            public static long val2;
-        }
-
-        private static uint fmix32(uint h)
-        {
-            h ^= h >> 16;
-            h *= 0x85ebca6b;
-            h ^= h >> 13;
-            h *= 0xc2b2ae35;
-            h ^= h >> 16;
-            return h;
-        }
-
-        private static ulong fmix64(ulong k)
-        {
-            k ^= k >> 33;
-            k *= 0xff51afd7ed558ccdL;
-            k ^= k >> 33;
-            k *= 0xc4ceb9fe1a85ec53L;
-            k ^= k >> 33;
-            return k;
-        }
-
-        /** Gets a long from a byte buffer in little endian byte order. */
-        private static long getLongLittleEndian(byte[] buf, int offset)
-        {
-            return ((long)buf[offset + 7] << 56)   // no mask needed
-                    | ((buf[offset + 6] & 0xffL) << 48)
-                    | ((buf[offset + 5] & 0xffL) << 40)
-                    | ((buf[offset + 4] & 0xffL) << 32)
-                    | ((buf[offset + 3] & 0xffL) << 24)
-                    | ((buf[offset + 2] & 0xffL) << 16)
-                    | ((buf[offset + 1] & 0xffL) << 8)
-                    | ((buf[offset] & 0xffL));        // no shift needed
-        }
-
-
-        //-----------------------------------------------------------------------------
-        // Block read - if your platform needs to do endian-swapping or can only
-        // handle aligned reads, do the conversion here
-        private static uint ROTL32(uint x, SByte r)
-        {
-            return (x << r) | (x >> (32 - r));
-        }
-
-        private static ulong ROTL64(ulong x, SByte r)
-        {
-            return (x << r) | (x >> (64 - r));
-        }
-
-        private static uint fmix(uint h)
-        {
-            h ^= h >> 16;
-            h *= 0x85ebca6b;
-            h ^= h >> 13;
-            h *= 0xc2b2ae35;
-            h ^= h >> 16;
-
-            return h;
-        }
-
+        
         #region String
         public static uint GetHashCode_x86_32(string content)
         {
@@ -331,6 +266,73 @@ namespace CCommon.Common.Hash
             returnValue[1] = h2;
             return returnValue;
 
+        }
+        #endregion
+
+        #region 内部私有方法
+        /** 128 bits of state */
+        private static class LongPair
+        {
+            public static long val1;
+            public static long val2;
+        }
+
+        private static uint fmix32(uint h)
+        {
+            h ^= h >> 16;
+            h *= 0x85ebca6b;
+            h ^= h >> 13;
+            h *= 0xc2b2ae35;
+            h ^= h >> 16;
+            return h;
+        }
+
+        private static ulong fmix64(ulong k)
+        {
+            k ^= k >> 33;
+            k *= 0xff51afd7ed558ccdL;
+            k ^= k >> 33;
+            k *= 0xc4ceb9fe1a85ec53L;
+            k ^= k >> 33;
+            return k;
+        }
+
+        /** Gets a long from a byte buffer in little endian byte order. */
+        private static long getLongLittleEndian(byte[] buf, int offset)
+        {
+            return ((long)buf[offset + 7] << 56)   // no mask needed
+                    | ((buf[offset + 6] & 0xffL) << 48)
+                    | ((buf[offset + 5] & 0xffL) << 40)
+                    | ((buf[offset + 4] & 0xffL) << 32)
+                    | ((buf[offset + 3] & 0xffL) << 24)
+                    | ((buf[offset + 2] & 0xffL) << 16)
+                    | ((buf[offset + 1] & 0xffL) << 8)
+                    | ((buf[offset] & 0xffL));        // no shift needed
+        }
+
+
+        //-----------------------------------------------------------------------------
+        // Block read - if your platform needs to do endian-swapping or can only
+        // handle aligned reads, do the conversion here
+        private static uint ROTL32(uint x, SByte r)
+        {
+            return (x << r) | (x >> (32 - r));
+        }
+
+        private static ulong ROTL64(ulong x, SByte r)
+        {
+            return (x << r) | (x >> (64 - r));
+        }
+
+        private static uint fmix(uint h)
+        {
+            h ^= h >> 16;
+            h *= 0x85ebca6b;
+            h ^= h >> 13;
+            h *= 0xc2b2ae35;
+            h ^= h >> 16;
+
+            return h;
         }
         #endregion
     }
