@@ -78,6 +78,7 @@
     <Compile Include="Excel\ExcelHelper.cs" />
     <Compile Include="Excel\EDataType.cs" />
     <Compile Include="Excel\ExportFieldInfo.cs" />
+    <Compile Include="FileWatcherHelper.cs" />
     <Compile Include="Hash\MurmurHash3.cs" />
     <Compile Include="JsonHelper.cs" />
     <Compile Include="Maths\IntHelper.cs" />

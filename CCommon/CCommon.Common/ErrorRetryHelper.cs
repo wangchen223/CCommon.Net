@@ -45,7 +45,7 @@ namespace CCommon.Common
                 }
                 catch (Exception ex)
                 {
-                    isTrue = ReturnResult.FailResult(ex.ToString());
+                    isTrue = ReturnResult.FailResult(ex.ToString(),ex);
                     System.Threading.Thread.Sleep(int.Parse(errTime[errNum]) * 1000);
                     errNum++;
                 }

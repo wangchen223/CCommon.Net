@@ -21,6 +21,10 @@ namespace CCommon.Test
             Assert.AreEqual(config.GetValue<string>("SystemInfo"), "基础库");
             Assert.AreEqual(config.GetValue<string>("ProjectName"), "测试");
             Assert.AreEqual(config.GetValue<Dictionary<string,string>>("ConnectionStrings")["EasySystemConnectionString"], "EasySystemConnection");
+            while (true)
+            {
+                System.Threading.Thread.Sleep(1000);
+            }
         }
     }
 }

@@ -80,6 +80,10 @@ namespace CCommon.Common
             get { return (Int16)State >= 200 && (Int16)State < 300; }
         }
 
+        /// <summary>
+        /// 异常信息
+        /// </summary>
+        public Exception Exception { get; set; }
         #region 成功
         /// <summary>
         /// 成功
@@ -116,9 +120,9 @@ namespace CCommon.Common
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static ReturnResult FailResult(string message)
+        public static ReturnResult FailResult(string message,Exception ex=null)
         {
-            return new ReturnResult { Message = message, State = EReturnResultState.Fail };
+            return new ReturnResult { Message = message, State = EReturnResultState.Fail,Exception=ex };
         }
         #endregion
 
@@ -138,12 +142,13 @@ namespace CCommon.Common
         /// <param name="state"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static ReturnResult OtherResult(EReturnResultState state, string message)
+        public static ReturnResult OtherResult(EReturnResultState state, string message, Exception exception = null)
         {
             return new ReturnResult
             {
                 State = state,
-                Message = message
+                Message = message,
+                Exception= exception
             };
         }
         #endregion
@@ -213,9 +218,9 @@ namespace CCommon.Common
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static ReturnResult<T> FailResult(string message)
+        public static ReturnResult<T> FailResult(string message, Exception exception = null)
         {
-            return new ReturnResult<T> { Message = message, State = EReturnResultState.Fail };
+            return new ReturnResult<T> { Message = message, State = EReturnResultState.Fail, Exception = exception };
         }
         #endregion
 
@@ -257,9 +262,9 @@ namespace CCommon.Common
         /// <param name="message"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static ReturnResult<T> OtherResult(EReturnResultState state, string message, T data)
+        public static ReturnResult<T> OtherResult(EReturnResultState state, string message, T data, Exception exception = null)
         {
-            return new ReturnResult<T> { Message = message, State = state, Data = data };
+            return new ReturnResult<T> { Message = message, State = state, Data = data, Exception = exception };
         }
 
         #endregion
