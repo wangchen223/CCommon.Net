@@ -64,6 +64,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\Configuration.cs" />
+    <Compile Include="Config\ConfigurationBuild.cs" />
+    <Compile Include="Config\IConfiguration.cs" />
+    <Compile Include="Config\IConfigurationBuild.cs" />
+    <Compile Include="Config\IConfigurationProvider.cs" />
+    <Compile Include="Config\JsonConfigurationProvider.cs" />
+    <Compile Include="Config\ResultValue\DefaultValue.cs" />
+    <Compile Include="Config\ResultValue\IValue.cs" />
+    <Compile Include="Config\ResultValue\JsonValue.cs" />
+    <Compile Include="Config\XmlConfigurationProvider.cs" />
     <Compile Include="ErrorRetryHelper.cs" />
     <Compile Include="Excel\ExcelHelper.cs" />
     <Compile Include="Excel\EDataType.cs" />

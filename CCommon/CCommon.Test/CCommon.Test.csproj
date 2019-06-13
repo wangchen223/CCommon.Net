@@ -53,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ConfigTest.cs" />
     <Compile Include="ExcelHelperTest.cs" />
     <Compile Include="JsonHelperTest.cs" />
     <Compile Include="Maths\LongHelperTest.cs" />
@@ -68,6 +69,16 @@
       <Project>{44298898-4c9c-40e2-a1f8-283a812ab088}</Project>
       <Name>CCommon.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ConfigInfo\appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ConfigInfo\AppSettingsConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
