@@ -59,6 +59,7 @@
     <Compile Include="Maths\LongHelperTest.cs" />
     <Compile Include="Maths\IntHelperTest.cs" />
     <Compile Include="MurmurHash3Test.cs" />
+    <Compile Include="TextHelperTest.cs" />
     <Compile Include="TimeUnitTest.cs" />
     <Compile Include="RateLimiterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

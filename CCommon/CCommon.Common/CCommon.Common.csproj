@@ -90,6 +90,7 @@
     <Compile Include="RateLimiter\SmoothRateLimiter.cs" />
     <Compile Include="RateLimiter\SmoothWarmingUp.cs" />
     <Compile Include="ReturnResult.cs" />
+    <Compile Include="TextHelper.cs" />
     <Compile Include="TimeUnit.cs" />
   </ItemGroup>
   <ItemGroup>
