@@ -19,6 +19,8 @@ namespace CCommon.Test
                 .AddJsonFile("ConfigInfo/appsettings.json")
                 .AddXmlFile("ConfigInfo/AppSettingsConfig.xml").Build();
             Assert.AreEqual(config.GetValue<string>("SystemInfo"), "基础库");
+            Assert.AreEqual(config.GetValue<string>("ChildSystemInfo"), "XML子配置");
+            Assert.AreEqual(config.GetValue<string>("JsonChildSystemInfo"), "Json子配置");
             Assert.AreEqual(config.GetValue<string>("ProjectName"), "测试");
             Assert.AreEqual(config.GetValue<Dictionary<string,string>>("ConnectionStrings")["EasySystemConnectionString"], "EasySystemConnection");
         }

@@ -36,7 +36,10 @@ namespace CCommon.Test
             userList.Add(new User { Name = "张三" });
             userList.Add(new User { Name = "李四" });
             
-            ExcelHelper<User>.ToExcel(userList, flist);
+            var m=ExcelHelper<User>.ToExcel(userList, flist).GetBuffer();
+            System.IO.FileStream fs = new System.IO.FileStream("D:\\Testabc.xls", System.IO.FileMode.Create);
+            fs.Write(m, 0, m.Length);
+            fs.Close();
         }
 
         [TestMethod]
