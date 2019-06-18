@@ -25,6 +25,6 @@ namespace CCommon.Common.Excel
         /// <summary>
         /// 列值
         /// </summary>
-        public Func<T, string> FieldValue { get; set; }
+        public Func<T,string> FieldValue { get; set; }
     }
 }

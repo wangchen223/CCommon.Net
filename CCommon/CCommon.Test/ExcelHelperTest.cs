@@ -11,6 +11,7 @@ namespace CCommon.Test
     public class User
     {
         public string Name { get; set; }
+        public int Age { get; set; }
     }
     /// <summary>
     /// Excel导出
@@ -27,24 +28,19 @@ namespace CCommon.Test
             flist.Add(new ExportFieldInfo<User>
             {
                 DisplayName = "姓名",
-                DataType = EDataType.String,
                 FieldValue = info => info.Name
             });
             flist.Add(new ExportFieldInfo<User>
             {
                 DisplayName = "年龄",
-                DataType = EDataType.String,
-                FieldValue = info => info.Name
+                FieldValue = info => info.Age+"岁"
             });
 
             var userList = new List<User>();
-            userList.Add(new User { Name = "张三" });
-            userList.Add(new User { Name = "李四" });
+            userList.Add(new User { Name = "张三",Age=30 });
+            userList.Add(new User { Name = "李四",Age=25 });
             
-            var m=ExcelHelper<User>.ToExcel(userList, flist).GetBuffer();
-            System.IO.FileStream fs = new System.IO.FileStream("D:\\Testabc.xls", System.IO.FileMode.Create);
-            fs.Write(m, 0, m.Length);
-            fs.Close();
+            ExcelHelper<User>.ToExcel(userList, flist).GetBuffer();
         }
 
         [TestMethod]
@@ -56,7 +52,7 @@ namespace CCommon.Test
             {
                 DisplayName = "年龄",
                 DataType = EDataType.String,
-                FieldValue = info => info["Age"].ToString()+"岁"
+                FieldValue = info => info["Name"].ToString()+"岁"
             });
 
             ExcelHelper.ToExcel(TestData(), flist);

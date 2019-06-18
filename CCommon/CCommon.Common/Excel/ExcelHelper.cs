@@ -74,17 +74,10 @@ namespace CCommon.Common.Excel
                     for (int k = 0; k < fieldInfies.Count; k++)
                     {
                         //获取类型
-                        Type type = typeof(T); //datas[dataIndex].GetType();
-                                               //获取指定名称的属性
-                                               //System.Reflection.PropertyInfo propertyInfo = type.GetProperty(fieldInfies.ElementAt(k).FieldName);
-                                               //if (propertyInfo == null)
-                                               //{
-                                               //    throw new ArgumentNullException(string.Format("您所指定的{0}属性不存在,请检查FieldName是否正确", fieldInfies.ElementAt(k).FieldName));
-                                               //}
                         if (datas.Count > 0)
                         {
                             //获取属性值
-                            var value = fieldInfies.ElementAt(k).FieldValue(datas[dataIndex]); //propertyInfo.GetValue(datas[dataIndex], null);
+                            var value = fieldInfies.ElementAt(k).FieldValue(datas[dataIndex]); 
                             switch (fieldInfies.ElementAt(k).DataType)
                             {
                                 case EDataType.Int:

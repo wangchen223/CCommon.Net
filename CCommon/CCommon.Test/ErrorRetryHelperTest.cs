@@ -55,5 +55,17 @@ namespace CCommon.Test
             });
             Assert.IsFalse(returnResult.IsValid);
         }
+
+
+        [TestMethod]
+        public void TestMethod5()
+        {
+            string errorRetryConfig = "1s,500mm,60*1s";
+            var returnResult = ErrorRetryHelper.Handle(errorRetryConfig, () =>
+            {
+                return ReturnResult.FailResult("aaa");
+            });
+            Assert.IsFalse(returnResult.IsValid);
+        }
     }
 }
