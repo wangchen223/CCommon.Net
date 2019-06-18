@@ -19,6 +19,22 @@ namespace CCommon.Common
                 return istrue ? ReturnResult.SuccessResult() : ReturnResult.FailResult();
             });
         }
+
+        /// <summary>
+        /// 错误自动重试公用方法
+        /// </summary>
+        /// <param name="errorRetryConfig">重试策略(单位:秒)</param>
+        /// <param name="methed"></param>
+        /// <returns></returns>
+        public static ReturnResult<T> Handle<T>(string errorRetryConfig, Func<ReturnResult<T>> methed)
+        {
+            return Handle(errorRetryConfig, () =>
+            {
+                var istrue = methed();
+                return istrue as ReturnResult;
+            }) as ReturnResult<T>;
+        }
+
         /// <summary>
         /// 错误自动重试公用方法
         /// </summary>

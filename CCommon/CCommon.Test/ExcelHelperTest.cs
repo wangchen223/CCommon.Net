@@ -30,7 +30,12 @@ namespace CCommon.Test
                 DataType = EDataType.String,
                 FieldValue = info => info.Name
             });
-
+            flist.Add(new ExportFieldInfo<User>
+            {
+                DisplayName = "年龄",
+                DataType = EDataType.String,
+                FieldValue = info => info.Name
+            });
 
             var userList = new List<User>();
             userList.Add(new User { Name = "张三" });
@@ -49,9 +54,9 @@ namespace CCommon.Test
             List<ExportFieldInfo<DataRow>> flist = new List<ExportFieldInfo<DataRow>>();
             flist.Add(new ExportFieldInfo<DataRow>
             {
-                DisplayName = "姓名",
+                DisplayName = "年龄",
                 DataType = EDataType.String,
-                FieldValue = info => info["Name"].ToString()
+                FieldValue = info => info["Age"].ToString()+"岁"
             });
 
             ExcelHelper.ToExcel(TestData(), flist);

@@ -8,9 +8,9 @@ namespace CCommon.Test
     public class ErrorRetryHelperTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void SuccessResultTest1()
         {
-            string errorRetryConfig = "1,2,1";
+            string errorRetryConfig = "1,2,1,6,7";
             var returnResult = ErrorRetryHelper.Handle(errorRetryConfig, () =>
             {
                 return true;
@@ -21,7 +21,7 @@ namespace CCommon.Test
 
 
         [TestMethod]
-        public void TestMethod2()
+        public void SuccessResultTest2()
         {
             string errorRetryConfig = "1,2,1";
             var returnResult = ErrorRetryHelper.Handle(errorRetryConfig, () =>
@@ -32,16 +32,27 @@ namespace CCommon.Test
             Assert.IsTrue(returnResult.IsValid);
         }
 
-
         [TestMethod]
-        public void TestMethod3()
+        public void SuccessResultTest3()
         {
             string errorRetryConfig = "1,2,1";
             var returnResult = ErrorRetryHelper.Handle(errorRetryConfig, () =>
             {
-                return ReturnResult.FailResult();
+                return ReturnResult<DateTime>.SuccessResult(new DateTime(2019,1,1));
             });
 
+            Assert.IsTrue(returnResult.IsValid);
+            Assert.AreEqual(returnResult.Data, new DateTime(2019, 1, 1));
+        }
+
+        [TestMethod]
+        public void TestMethod4()
+        {
+            string errorRetryConfig = "1,2,1";
+            var returnResult = ErrorRetryHelper.Handle(errorRetryConfig, () =>
+            {
+                return ReturnResult.FailResult("aaa");
+            });
             Assert.IsFalse(returnResult.IsValid);
         }
     }
