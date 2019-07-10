@@ -54,12 +54,13 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ConfigTest.cs" />
+    <Compile Include="EnumHelperTest.cs" />
     <Compile Include="ExcelHelperTest.cs" />
     <Compile Include="JsonHelperTest.cs" />
     <Compile Include="Maths\LongHelperTest.cs" />
     <Compile Include="Maths\IntHelperTest.cs" />
     <Compile Include="MurmurHash3Test.cs" />
-    <Compile Include="TextHelperTest.cs" />
+    <Compile Include="StringHelperTest.cs" />
     <Compile Include="TimeUnitTest.cs" />
     <Compile Include="RateLimiterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

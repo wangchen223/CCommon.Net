@@ -74,6 +74,7 @@
     <Compile Include="Config\ResultValue\IValue.cs" />
     <Compile Include="Config\ResultValue\JsonValue.cs" />
     <Compile Include="Config\XmlConfigurationProvider.cs" />
+    <Compile Include="EnumHelper.cs" />
     <Compile Include="ErrorRetryHelper.cs" />
     <Compile Include="Excel\ExcelHelper.cs" />
     <Compile Include="Excel\EDataType.cs" />
@@ -90,12 +91,13 @@
     <Compile Include="RateLimiter\SmoothRateLimiter.cs" />
     <Compile Include="RateLimiter\SmoothWarmingUp.cs" />
     <Compile Include="ReturnResult.cs" />
-    <Compile Include="TextHelper.cs" />
+    <Compile Include="StringHelper.cs" />
     <Compile Include="TimeUnit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
